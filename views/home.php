@@ -34,8 +34,16 @@
 
    foreach($ads as $ad) {
 
+    $create_date = date_create($ad["created_at"]);
+    $ad_date = date_format($create_date, "j/n/Y");
+
     echo
-    "<div>${ad["image"]}</div>";
+    "<div>
+      <img width='100px' src='/assets/images/ads/${ad["image"]}'>
+      <a href='#'>${ad["title"]}</a>
+      <p>Preço: ${ad["price"]}€</p>
+      <p>Data de criação: ${ad_date}</p>
+    </div>";
 
    }
    
