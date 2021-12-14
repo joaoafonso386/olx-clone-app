@@ -2,14 +2,14 @@
 
 require_once("base.php");
 
-class Categories extends Base
+class Ads extends Base
 {
 
   public function getAll() {
 
     $sql = "
-      SELECT category_id, name, image, permalink
-      FROM categories
+    SELECT ad_id, image, title, price, created_at
+    FROM ads
     ";
 
     $query = $this->db->prepare($sql);
