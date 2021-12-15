@@ -11,6 +11,8 @@
 
     <?php require("templates/navigation.php"); ?>
 
+    <?php require("templates/search.php"); ?>
+
     <h2>Categorias</h2>
 
    <?php
@@ -18,7 +20,7 @@
 
     echo 
     "<div>
-      <a href='/categories/${category["permalink"]}'>
+      <a href='/ads/search/${category["permalink"]}'>
         <h3>${category["name"]}</h3>
         <img width='100px' src='/assets/images/categories/${category["image"]}'>
       </a>
