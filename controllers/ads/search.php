@@ -1,6 +1,8 @@
 <?php
 
 require("models/categories.php");
+require("models/ads.php");
+require("validators/searchValidator.php");
 
 $modelCategories = new Categories();
 $categories = $modelCategories->getAll();
@@ -9,21 +11,24 @@ foreach($categories as $category) {
   $permalinks[] = $category["permalink"];
 }
 
-//busca por categoria
+$query_outputs = [];
+
 if( in_array($search_term, $permalinks) ) {
-  //Buscar os anuncios por categoria
 
-  echo "buscar por categoria";
-
-  //buscar por termo de pesquisa
-} else if( !empty($search_term) ) {
+  $modelAds = new Ads();
+  $query_outputs = $modelAds->getByCategory( $search_term );
   
-  echo "buscar por termo de pesquisa";
+  require("views/search.php");
+
+} else if( !empty($search_term ) && validateGet ($_GET["query"] ) ) {
+
+  $query = htmlspecialchars((strip_tags((strtolower($_GET["query"])))));
+  echo $query . " buscar por termo de pesquisa";
 
 } else {
 
   http_response_code(404);
-  echo "404: This page was not found.";
+  echo "Não foram encontrados quaisquer anúncios";
 
 }
 
