@@ -20,6 +20,7 @@ class Ads extends Base
   }
 
   public function getByCategory($category_name) {
+
     $sql = "
     SELECT a.title, a.image, a.price, a.created_at
     FROM ads as a
@@ -32,6 +33,20 @@ class Ads extends Base
 
     return $query->fetchAll( PDO::FETCH_ASSOC );
 
+  }
+
+  public function getByTitleOrDescription($search_term) {
+
+    $sql = "
+    SELECT title, image, price, created_at
+    FROM ads
+    WHERE title OR description LIKE ?
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute([ '%'.$search_term.'%' ]);
+
+    return $query->fetchAll( PDO::FETCH_ASSOC );
   }
 
 }
