@@ -21,34 +21,42 @@ if( in_array($search_term, $permalinks) ) {
   $query_name = $search_term;
   $query_outputs = $modelAds->getByCategory( $query_name );
   
-  require("views/search.php");
+  require("views/adsearch.php");
 
 } else if( validateGet($_GET["query"]) ) {
 
   $get_query = htmlspecialchars((strip_tags((strtolower(trim($_GET["query"]))))));
 
+  if(strlen($get_query) >= 3) {
+
   foreach($permalinks as $permalink) {
 
     if( in_array($get_query, $permalinks) || strpos($get_query, $permalink) !== false ) {
+      die(strlen($get_query));
 
-      $query_name = $get_query;
-      $query_outputs = $modelAds->getByCategory( $permalink );
-    
-      require("views/search.php");
-      exit;
+      
+        $query_name = $get_query;
+        $query_outputs = $modelAds->getByCategory( $get_query );
+      
+        require("views/adsearch.php");
+      }
+
     }
 
+    $query_name = $get_query;
+    $query_outputs = $modelAds->getByTitleOrDescription( $query_name );
+    require("views/adsearch.php");
+
+  } else {
+    http_response_code(404);
+    exit("Erro: Insira uma query com mais caracteres");
   }
 
-  $query_name = $get_query;
-  $query_outputs = $modelAds->getByTitleOrDescription( $query_name );
-  print_r($query_outputs);
-  require("views/search.php");
 
 } else {
 
   http_response_code(404);
-  exit("Não foram encontrados quaisquer anúncios");
+  exit("Erro: Query inválida");
 
 }
 

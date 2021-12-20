@@ -16,11 +16,13 @@
   ?>
 
   <h2>Anúncios para o termo: "<?php echo ucfirst($query_name); ?>"</h2>
-
+ 
   <?php 
 
     echo count($query_outputs) === 1 ? "<h3>Encontrado "  . count($query_outputs) . " anúncio</h3>" : "<h3>Encontrados "  . count($query_outputs) . " anúncios</h3>";
-  
+  ?>
+   <hr>
+  <?php
     foreach($query_outputs as $output) {
 
     $create_date = date_create($output["created_at"]);
@@ -30,8 +32,8 @@
       "<div>
         <img width='100px' src='/assets/images/ads/${output["image"]}'>
         <h3>${output["title"]}</h3>
-        <p>${output["price"]}</p>
-        <p>${ad_date}</p>
+        <p>Preço: ${output["price"]} €</p>
+        <p>Criado a: ${ad_date}</p>
       </div>";  
 
     }

@@ -42,9 +42,9 @@
     echo
     "<div>
       <img width='100px' src='/assets/images/ads/${ad["image"]}'>
-      <a href='#'>${ad["title"]}</a>
+      <a href='/ads/detail/cu'>${ad["title"]}</a>
       <p>Preço: ${ad["price"]}€</p>
-      <p>Data de criação: ${ad_date}</p>
+      <p>Data de criação: ${ad_date}</p> 
     </div>";
 
    }

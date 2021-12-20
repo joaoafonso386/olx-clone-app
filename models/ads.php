@@ -40,11 +40,16 @@ class Ads extends Base
     $sql = "
     SELECT title, image, price, created_at
     FROM ads
-    WHERE title OR description LIKE ?
+    WHERE 
+      MATCH(title) AGAINST(?) OR 
+      MATCH(description) AGAINST(?) OR 
+      title LIKE ? OR
+      description LIKE ?
+    ORDER BY created_at
     ";
 
     $query = $this->db->prepare($sql);
-    $query->execute([ '%'.$search_term.'%' ]);
+    $query->execute([ $search_term, $search_term, "%".$search_term."%", "%".$search_term."%" ]);
 
     return $query->fetchAll( PDO::FETCH_ASSOC );
   }
