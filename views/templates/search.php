@@ -1,4 +1,4 @@
 <form method="GET" action="/ads/search/">
   <input name="query" type="text">
-  <button>Search</button>
+  <button type="submit" name="send">Search</button>
 </form>

@@ -4,60 +4,37 @@ require("models/categories.php");
 require("models/ads.php");
 require("validators/searchValidator.php");
 
-$modelCategories = new Categories();
 $modelAds = new Ads();
-$categories = $modelCategories->getAll();
-
-$permalinks = [];
-foreach($categories as $category) {
-  $permalinks[] = $category["permalink"];
-}
 
 $query_outputs = [];
 $query_name = "";
 
-if( in_array($search_term, $permalinks) ) {
+
+if( isset($_GET["query"]) && validateSearchTerm($_GET["query"]) ) {
+  
+  $sanitize_query = htmlspecialchars((strip_tags((strtolower(trim($_GET["query"]))))));
+    
+  $query_name = $sanitize_query;
+  $query_outputs = $modelAds->getByCategory( $sanitize_query );
+  
+  if(empty($query_outputs)) {
+    $query_name = $sanitize_query;
+    $query_outputs = $modelAds->getByTitleOrDescription( $query_name );
+  }
+
+} else if(empty($_GET)) {
 
   $query_name = $search_term;
   $query_outputs = $modelAds->getByCategory( $query_name );
-  
-  require("views/adsearch.php");
-
-} else if( validateGet($_GET["query"]) ) {
-
-  $get_query = htmlspecialchars((strip_tags((strtolower(trim($_GET["query"]))))));
-
-  if(strlen($get_query) >= 3) {
-
-  foreach($permalinks as $permalink) {
-
-    if( in_array($get_query, $permalinks) || strpos($get_query, $permalink) !== false ) {
-      die(strlen($get_query));
-
-      
-        $query_name = $get_query;
-        $query_outputs = $modelAds->getByCategory( $get_query );
-      
-        require("views/adsearch.php");
-      }
-
-    }
-
-    $query_name = $get_query;
-    $query_outputs = $modelAds->getByTitleOrDescription( $query_name );
-    require("views/adsearch.php");
-
-  } else {
-    http_response_code(404);
-    exit("Erro: Insira uma query com mais caracteres");
-  }
-
 
 } else {
 
-  http_response_code(404);
-  exit("Erro: Query inválida");
+  http_response_code(400);
+  exit("400 Bad Request");
 
 }
+
+require("views/adsearch.php");
+
 
 ?>

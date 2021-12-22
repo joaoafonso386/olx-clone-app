@@ -8,7 +8,7 @@ class Ads extends Base
   public function getAll() {
 
     $sql = "
-    SELECT ad_id, image, title, price, created_at
+    SELECT ad_id, image, title, price, created_at, permalink
     FROM ads
     ";
 
@@ -25,11 +25,13 @@ class Ads extends Base
     SELECT a.title, a.image, a.price, a.created_at
     FROM ads as a
     INNER JOIN categories as c USING(category_id)
-    WHERE c.permalink = ?
+    WHERE 
+      MATCH(c.permalink) AGAINST (?) OR
+      c.permalink LIKE ?
     ";
 
     $query = $this->db->prepare($sql);
-    $query->execute([ $category_name ]);
+    $query->execute([ $category_name, "%".$category_name."%"]);
 
     return $query->fetchAll( PDO::FETCH_ASSOC );
 
