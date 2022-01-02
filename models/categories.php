@@ -5,7 +5,7 @@ require_once("base.php");
 class Categories extends Base
 {
 
-  public function getAll() {
+  public function getAllCategories() {
 
     $sql = "
       SELECT category_id, name, image, permalink

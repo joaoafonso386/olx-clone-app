@@ -11,7 +11,8 @@ $main_controllers = [
   "user",
   "login",
   "register",
-  "ads"
+  "ads",
+  "backoffice"
 ];
 
 $no_secondary_controllers = [

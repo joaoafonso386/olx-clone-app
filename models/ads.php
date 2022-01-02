@@ -5,7 +5,7 @@ require_once("base.php");
 class Ads extends Base
 {
 
-  public function getAll() {
+  public function getAllAds() {
 
     $sql = "
     SELECT ad_id, image, title, price, created_at, permalink
@@ -19,7 +19,7 @@ class Ads extends Base
 
   }
 
-  public function getByCategory($category_name) {
+  public function getAdsByCategory($category_name) {
 
     $sql = "
     SELECT a.title, a.image, a.price, a.created_at
@@ -37,7 +37,7 @@ class Ads extends Base
 
   }
 
-  public function getByTitleOrDescription($search_term) {
+  public function getAdsBySearchTerm($search_term) {
 
     $sql = "
     SELECT title, image, price, created_at
@@ -56,4 +56,18 @@ class Ads extends Base
     return $query->fetchAll( PDO::FETCH_ASSOC );
   }
 
+  public function getAdByPermalink($ad_permalink) {
+    $sql = "
+    SELECT ad_id, title, image, price, created_at, description
+    FROM ads
+    WHERE permalink = ?
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute([ $ad_permalink ]);
+
+    return $query->fetch( PDO::FETCH_ASSOC );
+  }
+
+ 
 }

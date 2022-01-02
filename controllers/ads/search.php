@@ -15,17 +15,17 @@ if( isset($_GET["query"]) && validateSearchTerm($_GET["query"]) ) {
   $sanitize_query = htmlspecialchars((strip_tags((strtolower(trim($_GET["query"]))))));
     
   $query_name = $sanitize_query;
-  $query_outputs = $modelAds->getByCategory( $sanitize_query );
+  $query_outputs = $modelAds->getAdsByCategory( $sanitize_query );
   
   if(empty($query_outputs)) {
     $query_name = $sanitize_query;
-    $query_outputs = $modelAds->getByTitleOrDescription( $query_name );
+    $query_outputs = $modelAds->getAdsBySearchTerm( $query_name );
   }
 
 } else if(empty($_GET)) {
 
   $query_name = $search_term;
-  $query_outputs = $modelAds->getByCategory( $query_name );
+  $query_outputs = $modelAds->getAdsByCategory( $query_name );
 
 } else {
 

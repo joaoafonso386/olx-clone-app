@@ -6,7 +6,7 @@ require("models/ads.php");
 $modelCategories = new Categories();
 $modelAds = new Ads();
 
-$categories = $modelCategories->getAll();
-$ads = $modelAds->getAll();
+$categories = $modelCategories->getAllCategories();
+$ads = $modelAds->getAllAds();
 
 require("views/home.php");
