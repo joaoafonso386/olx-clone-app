@@ -33,18 +33,19 @@
    <h2>Anúncios</h2>
 
    <?php
+   
+   require("utils/utils.php");
 
    foreach($ads as $ad) {
 
-    $create_date = date_create($ad["created_at"]);
-    $ad_date = date_format($create_date, "j/n/Y");
+    $formated_date = dateFormater($ad["created_at"]);
 
     echo
     "<div>
       <img width='100px' src='/assets/images/ads/${ad["image"]}'>
       <a href='/ads/detail/${ad["permalink"]}'>${ad["title"]}</a>
       <p>Preço: ${ad["price"]}€</p>
-      <p>Data de criação: ${ad_date}</p> 
+      <p>Data de criação: ${formated_date}</p> 
     </div>";
 
    }

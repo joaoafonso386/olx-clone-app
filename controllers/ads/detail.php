@@ -25,6 +25,11 @@ if(!empty($search_term)) {
   if(empty( $ad_comments )) {
     $message = "Não existem comentários para este anúncio";
   }
+  
+  //Apenas mostrar com base no login de um utilizador
+  //Verificar se POST existe (isset)
+  //caso exista sanitizar os dados (criar função de sanitização)
+  //Inserir na base de dados
 
   require("views/addetail.php");
 
