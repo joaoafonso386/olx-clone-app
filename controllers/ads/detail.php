@@ -3,6 +3,7 @@
 require("models/ads.php");
 require("models/adcomments.php");
 require("models/users.php");
+require("utils/utils.php");
 
 $message = "";
 

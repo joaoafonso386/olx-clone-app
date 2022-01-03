@@ -27,10 +27,14 @@ if( isset($_GET["query"]) && validateSearchTerm($_GET["query"]) ) {
   $query_name = $search_term;
   $query_outputs = $modelAds->getAdsByCategory( $query_name );
 
-} else {
+  if(empty($query_outputs)) {
+    $query_outputs = $modelAds->getAdsBySearchTerm( $query_name );
+  }
 
+} else {
+  //mudar isto pa mostrar mensagem a informar que tem de inserir mais de 3 chars
   http_response_code(400);
-  exit("400 Bad Request");
+  exit("400 Bad Request. Insira uma query com mais de 3 caracteres");
 
 }
 

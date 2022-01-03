@@ -14,10 +14,10 @@
   ?>
 
   <main>
-    <div>
+    <div style="display: flex;">
       <div>
       <?php 
-
+        //mb_strtoupper é necessário para codificicação UTF-8
         $title = mb_strtoupper($ad["title"],'UTF-8');
 
         echo "
@@ -31,11 +31,35 @@
       ?>
       </div>
       <div>
-      <!-- Informações sobre o utilizador -->
+        <h2>Utilizador</h2>
+        <?php 
+          
+          $formated_date_month = dateFormater($user["created_at"], "F");
+          $formated_date_year = dateFormater($user["created_at"], "Y");
+          
+          echo "
+            <h3>${user["first_name"]} ${user["last_name"]}</h3>
+            <p>No OLX desde ${formated_date_month} de ${formated_date_year}</p>
+            <p>Contacto Telefónico: ${user["phone"]}</p>
+            <p>Localização: ${user["city"]}, ${user["postal_code"]}</p>
+          ";
+
+        ?>
       </div>
     </div>
+    <hr>
     <div>
-      <!-- comentários -->
+      <h2>Comentários</h2>
+      <?php
+        foreach($ad_comments as $ad_comment) {
+          echo "
+            <h3>${ad_comment["first_name"]}</h3>
+            <p>Data: <time>${ad_comment["created_at"]}</time></p>
+            <p>${ad_comment["description"]}</p>
+          ";
+        }
+
+      ?>
     </div>
     <p><?php echo $message ?></p>
     <!-- //verificar na view se devo mostrar ou não um formulário que depende do utilizador estar logado -->

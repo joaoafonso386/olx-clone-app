@@ -34,8 +34,6 @@
 
    <?php
    
-   require("utils/utils.php");
-
    foreach($ads as $ad) {
 
     $formated_date = dateFormater($ad["created_at"]);

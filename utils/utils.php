@@ -1,7 +1,12 @@
 <?php
 
 
-//Formater for TIME_STAMP type dates
+/**
+ * Formater for dates
+ * @param format_type string
+ * @param time_stamp TIME_STAMP
+ */
+
 function dateFormater($time_stamp, $format_type = "j/n/Y") {
 
   $create_date = date_create($time_stamp);

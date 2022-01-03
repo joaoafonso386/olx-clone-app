@@ -2,6 +2,7 @@
 
 require("models/categories.php");
 require("models/ads.php");
+require("utils/utils.php");
 
 $modelCategories = new Categories();
 $modelAds = new Ads();
