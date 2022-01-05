@@ -34,8 +34,8 @@
         <h2>Utilizador</h2>
         <?php 
           
-          $formated_date_month = dateFormater($user["created_at"], "F");
-          $formated_date_year = dateFormater($user["created_at"], "Y");
+          $formated_date_month = dateFormatter($user["created_at"], "F");
+          $formated_date_year = dateFormatter($user["created_at"], "Y");
           
           echo "
             <h3>${user["first_name"]} ${user["last_name"]}</h3>

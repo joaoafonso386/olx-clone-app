@@ -1,6 +1,7 @@
 <?php
 
 require_once("base.php");
+require("validators/validators.php");
 
 class Users extends Base
 {
@@ -21,6 +22,35 @@ class Users extends Base
     $query->execute([ $ad_id ]);
 
     return $query->fetch( PDO::FETCH_ASSOC );
+  }
+
+  public function createUser( $user ) {
+  
+    if( validateRegisterUser($user) ) {
+
+      // $sql = "
+      // INSERT INTO users (name, email, password, address, city, postal_code, country, vat_code) 
+      // VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      // ";
+
+      // $query= $this->db->prepare($sql);
+          
+      // $result = $query->execute([
+      //   $user["name"],
+      //   $user["email"],
+      //   password_hash($user["password"], PASSWORD_DEFAULT),
+      //   $user["address"],
+      //   $user["city"],
+      //   $user["postal_code"],
+      //   $user["country"],
+      //   $user["vat_code"]
+      // ]);
+          
+      // return $result ? $this->db->lastInsertId() : 0;
+
     }
-    
+
+    return 0;
+
+  }    
 }

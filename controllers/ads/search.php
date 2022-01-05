@@ -2,7 +2,7 @@
 
 require("models/categories.php");
 require("models/ads.php");
-require("validators/searchValidator.php");
+require("validators/validators.php");
 
 $modelAds = new Ads();
 

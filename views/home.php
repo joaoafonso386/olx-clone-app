@@ -11,6 +11,8 @@
 
     <?php require("templates/navigation.php"); ?>
 
+    <p>Olá <?php if(isset($_SESSION["user_name"])) echo $_SESSION["user_name"] ?></p>
+
     <?php require("templates/search.php"); ?>
 
     <h2>Categorias</h2>
@@ -36,7 +38,7 @@
    
    foreach($ads as $ad) {
 
-    $formated_date = dateFormater($ad["created_at"]);
+    $formated_date = dateFormatter($ad["created_at"]);
 
     echo
     "<div>
