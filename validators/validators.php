@@ -2,10 +2,10 @@
 
 /**
  * Validate the search term used in the input search
- * @param (string) search_term
+ * @param {string} search_term
  */
 
-function validateSearchTerm($search_term) {
+function validateSearchTerm( $search_term ) {
 
   if(
     isset($search_term) && 
@@ -20,6 +20,11 @@ function validateSearchTerm($search_term) {
 
 }
 
+/**
+ * Validate a user registration before inserting into the database
+ * @param {array} user
+ */
+
 function validateRegisterUser( $user ) {
 
   if(
@@ -32,11 +37,11 @@ function validateRegisterUser( $user ) {
     mb_strlen((string)$user["age"]) >= 2 &&
     mb_strlen((string)$user["age"]) <= 3 &&
     mb_strlen($user["city"]) >= 3 &&
-    mb_strlen($user["city"]) <= 40 &&
+    mb_strlen($user["city"]) <= 60 &&
     mb_strlen($user["postal_code"]) >= 4 &&
     mb_strlen($user["postal_code"]) <= 20 &&
-    mb_strlen($user["vat_code"]) >= 9 &&
-    mb_strlen($user["vat_code"]) <= 60 &&
+    mb_strlen($user["phone"]) >= 4 &&
+    mb_strlen($user["phone"]) <= 60 &&
     mb_strlen($user["password"]) >= 8 &&
     mb_strlen($user["password"]) <= 1000 &&
     filter_var($user["email"], FILTER_VALIDATE_EMAIL) &&

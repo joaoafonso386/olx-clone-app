@@ -27,23 +27,24 @@ class Users extends Base
   public function createUser( $user ) {
   
     if( validateRegisterUser($user) ) {
-
-      // $sql = "
-      // INSERT INTO users (name, email, password, address, city, postal_code, country, vat_code) 
-      // VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      $sql = "
+      // INSERT INTO users (first_name, last_name, age, email, password, address, city, postal_code, phone, country) 
+      // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       // ";
 
       // $query= $this->db->prepare($sql);
           
       // $result = $query->execute([
-      //   $user["name"],
+      //   $user["first_name"],
+      //   $user["last_name"],
+      //   $user["age"],
       //   $user["email"],
       //   password_hash($user["password"], PASSWORD_DEFAULT),
       //   $user["address"],
       //   $user["city"],
       //   $user["postal_code"],
-      //   $user["country"],
-      //   $user["vat_code"]
+      //   $user["phone"],
+      //   $user["country"]
       // ]);
           
       // return $result ? $this->db->lastInsertId() : 0;

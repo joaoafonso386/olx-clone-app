@@ -12,13 +12,15 @@ $main_controllers = [
   "login",
   "register",
   "ads",
-  "backoffice"
+  "backoffice",
+  "logout"
 ];
 
 $no_secondary_controllers = [
   "home",
   "register",
-  "login"
+  "login",
+  "logout"
 ];
 
 

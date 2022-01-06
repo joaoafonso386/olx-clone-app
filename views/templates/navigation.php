@@ -13,5 +13,14 @@
     <li>
       <a href="#">Criar anúncio</a>
     </li>
+    <?php 
+    if(isset($_SESSION["user_name"])) {
+      echo "
+      <li>
+        <a href='/logout'>Logout</a>
+      </li>
+      ";
+    }
+    ?>
   </ul>
 </nav>
