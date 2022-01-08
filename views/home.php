@@ -11,10 +11,10 @@
 
     <?php require("templates/navigation.php"); ?>
 
-    <p>Olá <?php 
-      if(isset($_SESSION["user_name"])) echo $_SESSION["user_name"]; 
-      if(isset($_SESSION["admin_name"])) echo  $_SESSION["admin_name"];
-    ?></p>
+    <?php 
+      if(isset($_SESSION["user_name"])) echo "<p>Bem vindo ao OLX " . $_SESSION["user_name"] . "!</p>"; 
+      if(isset($_SESSION["admin_name"])) echo "<p>Bem vindo Administrador " . $_SESSION["admin_name"] . "</p>";
+    ?>
 
     <?php require("templates/search.php"); ?>
 

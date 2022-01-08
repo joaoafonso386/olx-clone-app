@@ -34,7 +34,7 @@ class Users extends Base
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ";
 
-
+      return 1;
       // $query= $this->db->prepare($sql);
           
       // $result = $query->execute([

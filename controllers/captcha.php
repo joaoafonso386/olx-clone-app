@@ -1,12 +1,15 @@
-<?php header("Content-Type: image/png");
+<?php 
+header("Content-Type: image/png");
+
+chdir('../');
 
 $image = imagecreate(210, 100);
 
-imagecolorallocate($image, 190, 190, 190);
+imagecolorallocate($image, 100, 190, 200);
 
-$font ="assets/fonts/DailyChallenge.otf";
+$font = getcwd() . "\\assets\\fonts\\captcha.ttf";
 
-$color = imagecolorallocate($image, 0, 0, 0);
+$color = imagecolorallocate($image, 255, 255, 255);
 
 $text = bin2hex( random_bytes(4) );
 

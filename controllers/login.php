@@ -25,7 +25,11 @@ if( !isset($_SESSION["user_id"]) ) {
       
       header("Location: /");
       
-    } else if(empty($user)) {
+    } else {
+      $message = "Dados incorretos";
+    }
+    
+    if(empty($user)) {
       
       $modelAdmin = new Admin();
       $admin = $modelAdmin->loginAdmin( $_POST );
@@ -37,14 +41,12 @@ if( !isset($_SESSION["user_id"]) ) {
         
         header("Location: /");
 
+      } else {
+        $message = "Dados incorretos";
       }
-      
-    } else {
-      $message = "Dados incorretos";
-      
     }
     
-  }
+  } 
   
   require("views/login.php");
   

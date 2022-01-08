@@ -17,7 +17,6 @@ print_r($_POST);
 echo"</pre>";
 
 if( isset($_POST["register"]) && in_array($_POST["country"], $country_code) ) {
-      
   
   foreach($_POST as $key => $value) {
     $_POST[ $key ] = defaultSanitizer($value);
