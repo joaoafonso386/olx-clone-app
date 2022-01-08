@@ -5,7 +5,7 @@
       <a href="/">Home</a>
     </li>
     <li>
-      <a href="#">My OLX</a>
+      <a href="/login">My OLX</a>
     </li>
     <li>
       <a href="#">Favoritos</a>

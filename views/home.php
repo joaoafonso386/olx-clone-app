@@ -11,7 +11,10 @@
 
     <?php require("templates/navigation.php"); ?>
 
-    <p>Olá <?php if(isset($_SESSION["user_name"])) echo $_SESSION["user_name"] ?></p>
+    <p>Olá <?php 
+      if(isset($_SESSION["user_name"])) echo $_SESSION["user_name"]; 
+      if(isset($_SESSION["admin_name"])) echo  $_SESSION["admin_name"];
+    ?></p>
 
     <?php require("templates/search.php"); ?>
 

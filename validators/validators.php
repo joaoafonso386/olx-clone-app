@@ -46,11 +46,29 @@ function validateRegisterUser( $user ) {
     mb_strlen($user["password"]) <= 1000 &&
     filter_var($user["email"], FILTER_VALIDATE_EMAIL) &&
     $user["password"] === $user["repeat_password"] &&
-    isset( $user["agrees"] )
+    isset( $user["agrees"] ) &&
+    $user["captcha"] === $_SESSION["captcha"]
     ) { 
       return true;
     } else {
       return false;
     }
 
+}
+
+/**
+ * Validate a user login
+ * @param {array} user || admin
+ */
+
+function validateLogin( $user ) {
+  if(
+  filter_var($user["email"], FILTER_VALIDATE_EMAIL) &&
+  mb_strlen($user["password"]) >= 8 &&
+  mb_strlen($user["password"]) <= 255
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }

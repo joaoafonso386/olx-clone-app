@@ -13,11 +13,7 @@
   </head>
   <body>
 
-<?php 
-
-  require("templates/navigation.php");
-
-?>
+<?php require("templates/navigation.php"); ?>
 
       <h1>Registar</h1>
 <?php 
@@ -110,10 +106,7 @@
         </label>
       </div>
       <div class="field">
-      <?php header("Content-Type: image/png"); 
-      
-      echo "<img src='${$image}?>'>"
-      ?>
+        <img src="/controllers/captcha.php">
       <label>
           Captcha
           <input type="text" name="captcha" required>
