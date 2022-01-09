@@ -3,6 +3,7 @@
 require("models/categories.php");
 require("models/ads.php");
 require("validators/validators.php");
+require("sanitizers/sanitizers.php");
 
 $modelAds = new Ads();
 
@@ -12,7 +13,7 @@ $query_name = "";
 
 if( isset($_GET["query"]) && validateSearchTerm($_GET["query"]) ) {
   
-  $sanitize_query = htmlspecialchars((strip_tags((strtolower(trim($_GET["query"]))))));
+  $sanitize_query = strtolower(defaultSanitizer($_GET["query"]));
     
   $query_name = $sanitize_query;
   $query_outputs = $modelAds->getAdsByCategory( $sanitize_query );
@@ -32,9 +33,8 @@ if( isset($_GET["query"]) && validateSearchTerm($_GET["query"]) ) {
   }
 
 } else {
-  //mudar isto pa mostrar mensagem a informar que tem de inserir mais de 3 chars
-  http_response_code(400);
-  exit("400 Bad Request. Insira uma query com mais de 3 caracteres");
+  
+  $message = "Insira uma query com mais de 3 caracteres";
 
 }
 

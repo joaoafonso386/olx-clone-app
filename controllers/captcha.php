@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+session_start();
+
 header("Content-Type: image/png");
 
 chdir('../');
@@ -11,11 +14,11 @@ $font = getcwd() . "\\assets\\fonts\\captcha.ttf";
 
 $color = imagecolorallocate($image, 255, 255, 255);
 
-$text = bin2hex( random_bytes(4) );
+$text = mb_strtoupper(bin2hex( random_bytes(4) ));
 
 $_SESSION["captcha"] = $text;
 
 imagettftext($image, 30, 0, 35, 60, $color, $font, $text);
 
 imagepng($image);
-?>
+

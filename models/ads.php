@@ -8,8 +8,10 @@ class Ads extends Base
   public function getAllAds() {
 
     $sql = "
-    SELECT ad_id, image, title, price, created_at, permalink
-    FROM ads
+    SELECT 
+      ad_id, image, title, price, created_at, permalink
+    FROM 
+      ads
     ";
 
     $query = $this->db->prepare($sql);
@@ -22,9 +24,12 @@ class Ads extends Base
   public function getAdsByCategory($category_name) {
 
     $sql = "
-    SELECT a.title, a.image, a.price, a.created_at
-    FROM ads as a
-    INNER JOIN categories as c USING(category_id)
+    SELECT 
+      a.title, a.image, a.price, a.created_at, a.permalink
+    FROM 
+      ads as a
+    INNER JOIN 
+      categories as c USING(category_id)
     WHERE 
       MATCH(c.permalink) AGAINST (?) OR
       c.permalink LIKE ?
@@ -40,8 +45,10 @@ class Ads extends Base
   public function getAdsBySearchTerm($search_term) {
 
     $sql = "
-    SELECT title, image, price, created_at
-    FROM ads
+    SELECT 
+      title, image, price, created_at, permalink
+    FROM 
+      ads
     WHERE 
       MATCH(title) AGAINST(?) OR 
       MATCH(description) AGAINST(?) OR 

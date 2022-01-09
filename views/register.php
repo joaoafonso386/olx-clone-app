@@ -19,7 +19,7 @@
 <?php 
 
   if(isset($message)) {
-    echo '<p role="alert">{$message}</p>';
+    echo '<p role="alert">' . $message .' </p>';
   }
 
 ?>

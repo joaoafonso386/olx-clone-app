@@ -12,10 +12,6 @@ foreach($countries as $country) {
   $country_code[] = $country["country_code"];
 }
 
-echo "<pre>"; 
-print_r($_POST); 
-echo"</pre>";
-
 if( isset($_POST["register"]) && in_array($_POST["country"], $country_code) ) {
   
   foreach($_POST as $key => $value) {
@@ -31,7 +27,7 @@ if( isset($_POST["register"]) && in_array($_POST["country"], $country_code) ) {
     
     header("Location: /home");
   } else {
-    $message= 'Informação obgrigatoria incorretamente preenchida corretamente';
+    $message= 'Informação obgrigatoria incorretamente preenchida';
   }
   
 }

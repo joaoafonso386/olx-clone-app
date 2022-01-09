@@ -5,7 +5,7 @@ require("models/users.php");
 require("models/admin.php");
 
 
-if( !isset($_SESSION["user_id"]) ) {
+if( !isset($_SESSION["user_id"]) || isset($_SESSION["admin_id"]) ) {
   
   if(isset($_POST["login"]) ) {
 

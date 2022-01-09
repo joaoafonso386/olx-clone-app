@@ -11,7 +11,7 @@
       <a href="#">Favoritos</a>
     </li>
     <li>
-      <a href="#">Criar anúncio</a>
+      <a href="/ads/create">Criar anúncio</a>
     </li>
     <?php 
     if(isset($_SESSION["user_name"])) {
