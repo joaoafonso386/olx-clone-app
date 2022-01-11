@@ -26,4 +26,5 @@ if(isset($_SESSION["user_name"])) {
 
 } else {
   header("Location: /login");
+  exit;
 }

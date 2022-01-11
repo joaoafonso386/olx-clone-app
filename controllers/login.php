@@ -53,7 +53,7 @@ if( !isset($_SESSION["user_id"]) || isset($_SESSION["admin_id"]) ) {
 } else {
   
   header("Location: /");
-  
+  exit;
 }
 
 

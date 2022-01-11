@@ -4,10 +4,24 @@ require("models/ads.php");
 require("models/adcomments.php");
 require("models/users.php");
 require("utils/utils.php");
+require("sanitizers/sanitizers.php");
 
 $message = "";
 
 if(!empty($search_term)) {
+
+  if(isset($_POST["comment"])) {
+
+    foreach($_POST as $key => $value) {
+      
+      $_POST[$key] = defaultSanitizer( $value );
+      
+    }
+        
+    $modelComments = new AdComments();
+    $comment_created = $modelComments->createComment($_POST, $_SESSION["user_id"]);
+    //validar no metodo
+  }
 
   $modelAds = new Ads();
   $ad = $modelAds->getAdByPermalink( $search_term );
@@ -27,11 +41,6 @@ if(!empty($search_term)) {
     $message = "Não existem comentários para este anúncio";
   }
   
-  //Apenas mostrar com base no login de um utilizador
-  //Verificar se POST existe (isset)
-  //caso exista sanitizar os dados (criar função de sanitização)
-  //Inserir na base de dados
-
   require("views/addetail.php");
 
 } else {

@@ -65,7 +65,7 @@ class Ads extends Base
 
   public function getAdByPermalink($ad_permalink) {
     $sql = "
-    SELECT ad_id, title, image, price, created_at, description
+    SELECT ad_id, title, image, price, created_at, description, permalink
     FROM ads
     WHERE permalink = ?
     ";

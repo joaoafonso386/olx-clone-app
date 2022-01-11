@@ -1,7 +1,6 @@
 <?php
 
 require_once("base.php");
-
 class AdComments extends Base
 {
 
@@ -18,6 +17,23 @@ class AdComments extends Base
     $query->execute([ $id ]);
 
     return $query->fetchAll( PDO::FETCH_ASSOC );
+
+  }
+
+  public function createComment($comment, $user_id) {
+   
+    $sql = "
+    INSERT INTO 
+      ad_comments (description, ad_id, user_id) 
+    VALUES 
+      (?, ?, ?)
+    ";
+
+    $query= $this->db->prepare($sql);
+        
+    $result = $query->execute([$comment["description"], $comment["ad_id"], $user_id]);
+        
+    return $result ? $this->db->lastInsertId() : 0;
 
   }
 
