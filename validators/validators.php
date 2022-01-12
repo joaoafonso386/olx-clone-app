@@ -32,7 +32,7 @@ function validateRegisterUser( $user ) {
     mb_strlen($user["last_name"]) <= 60 &&
     mb_strlen($user["address"]) >= 10 &&
     mb_strlen($user["address"]) <= 120 &&
-    intval($user["age"]) &&
+    intval($user["age"]) > 0 &&
     is_numeric($user["age"]) &&
     mb_strlen((string)$user["age"]) >= 2 &&
     mb_strlen((string)$user["age"]) <= 3 &&
@@ -71,4 +71,35 @@ function validateLogin( $user ) {
   } else {
     return false;
   }
+}
+
+
+function validateUploadImg($detected_format, $allowed_formats, $file) {
+  if(
+  $file["error"] === 0 &&
+  $file["size"] > 0 &&
+  $file["size"] < 4000000 && 
+  in_array($detected_format, $allowed_formats)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validateCreateAd( $ad ) {
+
+  if(
+  !empty($ad["title"]) &&
+  !empty($ad["description"]) &&
+  !empty($ad["price"]) &&
+  intval($ad["price"]) > 0 &&
+  is_numeric($ad["price"]) &&
+  mb_strlen($ad["title"]) <=120
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+
 }

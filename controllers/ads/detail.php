@@ -20,7 +20,7 @@ if(!empty($search_term)) {
         
     $modelComments = new AdComments();
     $comment_created = $modelComments->createComment($_POST, $_SESSION["user_id"]);
-    //validar no metodo
+    
   }
 
   $modelAds = new Ads();

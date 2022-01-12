@@ -3,13 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Efetuar Login</title>
-    <style>
-
-      .field {
-        margin-bottom: 10px;
-      }
-
-    </style>
+    <link rel="stylesheet" href="/styles/main.css">
 <?php 
 
   if(isset($message)) {

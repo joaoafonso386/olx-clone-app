@@ -4,13 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/main.css">
   <title><?php echo $ad["title"] ?></title>
-  <style>
-    .field textarea {
-      resize: none;
-    }
-
-  </style>
 </head>
 <body>
 
@@ -74,7 +69,6 @@
     <form action="<?php echo '/ads/detail/' . $ad["permalink"] ?>" method="POST">
       <div class="field">
         <label>Escreva um comenário</label>
-        <br>
         <textarea name="description" rows="4" cols="50" required></textarea>
       </div>
       <input type="hidden" name="ad_id" value="<?php echo $ad["ad_id"] ?>">
