@@ -5,7 +5,7 @@ require("models/users.php");
 require("models/admin.php");
 
 
-if( !isset($_SESSION["user_id"]) || isset($_SESSION["admin_id"]) ) {
+if( !isset($_SESSION[ "logged" ]) ) {
   
   if(isset($_POST["login"]) ) {
 
@@ -20,24 +20,20 @@ if( !isset($_SESSION["user_id"]) || isset($_SESSION["admin_id"]) ) {
 
     if( !empty($user) && password_verify($_POST["password"], $user["password"]) ) {
 
-      $_SESSION["user_id"] = $user["user_id"];
-      $_SESSION["user_name"] = $user["first_name"];
+      $_SESSION[ "logged" ]["user_id"] = $user["user_id"];
+      $_SESSION[ "logged" ][ "user_name"] = $user["first_name"];
       
       header("Location: /");
       
-    } else {
-      $message = "Dados incorretos";
-    }
-    
-    if(empty($user)) {
+    } else if(empty($user)) {
       
       $modelAdmin = new Admin();
       $admin = $modelAdmin->loginAdmin( $_POST );
       
       if(!empty($admin) && password_verify($_POST["password"], $admin["password"])) {
-        
-        $_SESSION["admin_id"] = $admin["admin_id"];
-        $_SESSION["admin_name"] = $admin["full_name"];
+
+        $_SESSION[ "logged" ]["admin_id"] = $admin["admin_id"];
+        $_SESSION[ "logged" ]["admin_name"] = $admin["full_name"];
         
         header("Location: /");
 

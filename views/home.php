@@ -12,8 +12,8 @@
     <?php require("templates/navigation.php"); ?>
 
     <?php 
-      if(isset($_SESSION["user_name"])) echo "<p>Bem vindo ao OLX " . $_SESSION["user_name"] . "!</p>"; 
-      if(isset($_SESSION["admin_name"])) echo "<p>Bem vindo Administrador " . $_SESSION["admin_name"] . "</p>";
+      if(isset($_SESSION[ "logged" ]["user_name"])) echo "<p>Bem vindo ao OLX " . $_SESSION[ "logged" ]["user_name"] . "!</p>"; 
+      if(isset($_SESSION[ "logged" ]["admin_name"])) echo "<p>Bem vindo Administrador " . $_SESSION[ "logged" ]["admin_name"] . "</p>";
     ?>
 
     <?php require("templates/search.php"); ?>

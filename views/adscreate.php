@@ -28,7 +28,7 @@
       <div class="field">
         <label>
           Preço
-          <input type="number" step=".01" name="price" required>
+          <input type="number" step=".01" name="price" required> €
         </label>
       </div>
       <div class="field">

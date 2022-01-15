@@ -1,5 +1,4 @@
 <?php 
-
 session_start();
 
 define("CONFIG", $config = parse_ini_file(".env"));
@@ -46,6 +45,5 @@ if( !empty($secondary_controller) && in_array($main_controller, $no_secondary_co
 }
 
   require("controllers/${main_controller}.php");
-
 
 ?>

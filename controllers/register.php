@@ -22,8 +22,9 @@ if( isset($_POST["register"]) && in_array($_POST["country"], $country_code) ) {
   $user_id = $modelUsers->createUser( $_POST );
   
   if(!empty($user_id)) {
-    $_SESSION["user_id"] = $user_id;
-    $_SESSION["user_name"] = $_POST["first_name"];
+
+    $_SESSION[ "logged" ]["user_id"] = $user_id;
+    $_SESSION[ "logged" ]["user_name"] = $_POST["first_name"];
     
     header("Location: /home");
   } else {

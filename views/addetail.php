@@ -64,7 +64,7 @@
     </div>
     <p><?php echo $message ?></p>
 
-    <?php if(isset($_SESSION["user_id"])) { ?>
+    <?php if(isset($_SESSION[ "logged" ])) { ?>
     <hr>
     <form action="<?php echo '/ads/detail/' . $ad["permalink"] ?>" method="POST">
       <div class="field">

@@ -1,16 +1,11 @@
 <?php
 
-//criar método no model para criar uma anuncio (insert)
-
-//Inserir
-
-//Ter área de visualização de ads criados
-
 require("models/categories.php");
 require("models/ads.php");
 require("validators/validators.php");
+require("utils/utils.php");
 
-if(isset($_SESSION["user_name"])) {
+if(isset($_SESSION[ "logged" ])) {
 
   $modelCategories = new Categories();
   $categories = $modelCategories->getAllCategories();
@@ -33,19 +28,23 @@ if(isset($_SESSION["user_name"])) {
 
     if( validateUploadImg($detected_format, $allowed_formats, $_FILES["image"]) && validateCreateAd($_POST) ) {
       
-      $new_file_name = date("YmHis") . "_" . bin2hex( random_bytes(4) );
+      $new_filename = date("Y-m-H-i-s") . "_" . bin2hex( random_bytes(4) );
       $extension = "." . array_search($detected_format, $allowed_formats);
-      $format_price = number_format($_POST["price"], 2);
+      $image = $new_filename . $extension;
+      $_POST["price"] = number_format($_POST["price"], 2);
+      $create_permalink = createPermalink($_POST["title"]);
 
+      move_uploaded_file($_FILES["image"]["tmp_name"], "assets/images/ads/" . $new_filename . $extension);
+      
       $modelAds = new Ads();
-      $ad_was_inserted = $modelAds->createAd($_POST, $format_price);
+      $ad_was_inserted = $modelAds->createAd($_POST, $_SESSION, $create_permalink, $image);
 
       if(!empty($ad_was_inserted)) {
         $message = "O seu anúncio foi criado!";
       }
       
     } else {
-      $message = "dados incorretamente inseridos";
+      $message = "Dados incorretamente inseridos";
     }
 
   }

@@ -14,7 +14,7 @@
       <a href="/ads/create">Criar anúncio</a>
     </li>
     <?php 
-    if(isset($_SESSION["user_name"])) {
+    if(isset($_SESSION[ "logged" ])) {
       echo "
       <li>
         <a href='/logout'>Logout</a>

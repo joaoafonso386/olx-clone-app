@@ -7,10 +7,14 @@ class AdComments extends Base
   public function getCommentsByAdId($id) {
 
     $sql = "
-    SELECT a.description, a.created_at, u.first_name, u.last_name
-    FROM ad_comments as a
-    INNER JOIN users as u USING(user_id)
-    WHERE ad_id = ?
+    SELECT 
+      a.description, a.created_at, u.first_name, u.last_name
+    FROM 
+      ad_comments as a
+    INNER JOIN 
+      users as u USING(user_id)
+    WHERE 
+      ad_id = ?
     ";
 
     $query = $this->db->prepare($sql);
@@ -31,7 +35,11 @@ class AdComments extends Base
 
     $query= $this->db->prepare($sql);
         
-    $result = $query->execute([$comment["description"], $comment["ad_id"], $user_id]);
+    $result = $query->execute([
+      $comment["description"], 
+      $comment["ad_id"], 
+      $user_id[ "logged" ]["user_id"]
+    ]);
         
     return $result ? $this->db->lastInsertId() : 0;
 

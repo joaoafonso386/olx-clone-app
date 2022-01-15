@@ -65,9 +65,12 @@ class Ads extends Base
 
   public function getAdByPermalink($ad_permalink) {
     $sql = "
-    SELECT ad_id, title, image, price, created_at, description, permalink
-    FROM ads
-    WHERE permalink = ?
+    SELECT 
+      ad_id, title, image, price, created_at, description, permalink
+    FROM 
+      ads
+    WHERE 
+      permalink = ?
     ";
 
     $query = $this->db->prepare($sql);
@@ -76,8 +79,26 @@ class Ads extends Base
     return $query->fetch( PDO::FETCH_ASSOC );
   }
 
-  public function createAd() {
-    
+  public function createAd($ad, $user, $permalink, $image) {
+    $sql = "
+    INSERT INTO
+      ads (image, title, description, price, post_views, user_id, category_id, permalink)
+    VALUES 
+      (?, ?, ?, ?, 0, ?, ?, ?)
+    ";
+
+    $query = $this->db->prepare($sql);
+    $result = $query->execute([ 
+        $image, 
+        $ad["title"], 
+        $ad["description"], 
+        $ad["price"], 
+        $user[ "logged" ]["user_id"], 
+        $ad["category"], 
+        $permalink 
+      ]);
+
+    return $result ? 1 : 0;
   }
 
  
