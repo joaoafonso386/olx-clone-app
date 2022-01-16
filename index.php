@@ -13,6 +13,7 @@ $main_controllers = [
   "ads",
   "backoffice",
   "logout",
+  "requests"
 ];
 
 $no_secondary_controllers = [

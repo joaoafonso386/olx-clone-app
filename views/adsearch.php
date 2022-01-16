@@ -9,10 +9,14 @@
 <body>
 
   
-  <?php 
+  <?php
+  
   require("views/templates/navigation.php"); 
-  if(!empty($message)) echo "Insira mais do q 3 chars";
   require("views/templates/search.php"); 
+
+  if(!empty($message)){
+    echo "<p role='alert'>{$message}</p>";
+  } 
   
   ?>
 

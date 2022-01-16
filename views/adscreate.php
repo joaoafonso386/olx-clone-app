@@ -9,7 +9,11 @@
 
 <?php require("templates/navigation.php"); ?>
 
-<?php if(!empty($message)) echo $message ?>
+<?php 
+  if(!empty($message)) {
+    echo "<p role='alert'>{$message}</p>";
+  }  
+?>
       <h1>Criar Anúncio</h1>
 
     <form enctype="multipart/form-data"  action="/ads/create" method="POST">

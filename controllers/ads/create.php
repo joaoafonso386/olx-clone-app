@@ -5,7 +5,7 @@ require("models/ads.php");
 require("validators/validators.php");
 require("utils/utils.php");
 
-if(isset($_SESSION[ "logged" ])) {
+if(isset($_SESSION[ "logged" ]["user_id"])) {
 
   $modelCategories = new Categories();
   $categories = $modelCategories->getAllCategories();

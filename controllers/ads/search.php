@@ -32,13 +32,15 @@ if( isset($_GET["query"]) && validateSearchTerm($_GET["query"]) ) {
     $query_outputs = $modelAds->getAdsBySearchTerm( $query_name );
   }
 
+  
 } else {
   
   $message = "Insira uma query com mais de 3 caracteres";
-
+  
 }
 
 require("views/adsearch.php");
+
 
 
 ?>
