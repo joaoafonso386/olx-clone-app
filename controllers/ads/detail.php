@@ -17,9 +17,11 @@ if(!empty($search_term)) {
       $_POST[$key] = defaultSanitizer( $value );
       
     }
-        
-    $modelComments = new AdComments();
-    $comment_created = $modelComments->createComment($_POST, $_SESSION);
+
+    if($_POST["description"] > 0) {
+      $modelComments = new AdComments();
+      $comment_created = $modelComments->createComment($_POST, $_SESSION);
+    }
     
   }
 

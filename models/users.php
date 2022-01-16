@@ -5,6 +5,21 @@ require("validators/validators.php");
 
 class Users extends Base
 {
+  public function getUserById($user) {
+    $sql = "
+    SELECT 
+      first_name, last_name, phone, city, postal_code, created_at, age, address
+    FROM 
+      users
+    WHERE 
+      user_id = ?
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute([ $user[ "logged" ]["user_id"] ]);
+
+    return $query->fetch( PDO::FETCH_ASSOC );
+  }
 
   public function getUserByAdId($ad_id) {
     $sql = "
