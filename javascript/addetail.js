@@ -20,7 +20,7 @@ button.onclick = () => {
     const message = document.createElement('p');
     
     div.textContent = '';
-    message.innerHTML = response.message + ' ' + '<a href="/favorites">Veja os seus favoritos</a>';
+    message.innerHTML = response.message + ' ' + '<a href="/user/favorites">Veja os seus favoritos</a>';
     div.appendChild(message);
     
   });

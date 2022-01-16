@@ -8,7 +8,7 @@
       <a href="/login">My OLX</a>
     </li>
     <li>
-      <a href="#">Favoritos</a>
+      <a href="/user/favorites">Favoritos</a>
     </li>
     <li>
       <a href="/ads/create">Criar anúncio</a>

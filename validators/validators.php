@@ -103,3 +103,22 @@ function validateCreateAd( $ad ) {
   }
 
 }
+
+function requestsValidator( $requestBody ) {
+
+  if(
+    isset($requestBody["user_id"]) &&
+    !empty($requestBody["user_id"]) &&
+    !empty($requestBody["ad_id"]) &&
+    isset($requestBody["ad_id"]) &&
+    intval($requestBody["ad_id"]) > 0 &&
+    intval($requestBody["user_id"]) > 0 &&
+    is_numeric($requestBody["user_id"]) &&
+    is_numeric($requestBody["ad_id"])
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+
+}

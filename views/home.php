@@ -14,7 +14,7 @@
     require("templates/navigation.php");
 
     if(isset($_SESSION[ "logged" ]["user_name"])) echo "<p>Bem vindo ao OLX " . $_SESSION[ "logged" ]["user_name"] . "!</p>"; 
-    if(isset($_SESSION[ "logged" ]["admin_name"])) echo "<p>Bem vindo Administrador " . $_SESSION[ "logged" ]["admin_name"] . "</p>";
+    if(isset($_SESSION[ "logged" ]["admin_name"])) echo "<p>Bem vindo admin " . $_SESSION[ "logged" ]["admin_name"] . ". Aceda ao <a href='/backoffice'>backoffice aqui</a></p>";
 
     require("templates/search.php");
 
