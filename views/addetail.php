@@ -55,7 +55,7 @@
           
           echo "
             <h3>{$user["first_name"]} {$user["last_name"]}</h3>
-            <p>No OLX desde {$formated_date_month} de ${formated_date_year}</p>
+            <p>No OLX desde {$formated_date_month} de {$formated_date_year}</p>
             <p>Contacto Telefónico: {$user["phone"]}</p>
             <p>Localização: {$user["city"]}, {$user["postal_code"]}</p>
           ";

@@ -1,5 +1,5 @@
 const button = document.querySelector("button.remove-favorite");
-console.log(button.dataset);
+
 button.onclick = () => {
 
   fetch("/requests/favorite", {
@@ -13,8 +13,11 @@ button.onclick = () => {
       ad_id: parseInt(button.dataset.adId),
       user_id: parseInt(button.dataset.userId)
     })
-  }).then(response => response.json())
-    .then(response => {
+  }).then(response => { 
+    if(response.status === 200) {
+      response.json()
+    }
+  }).then(response => {
     const divMessage = document.querySelector(".message");
     const divContainer = document.querySelector(".container");
     const message = document.createElement('p');

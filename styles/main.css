@@ -5,3 +5,13 @@
 .field textarea {
   resize: none;
 }
+
+.admin-users-table, td, tr, th {
+  border: 1px solid #000;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.admin-users-table td, th {
+ padding: 25px;
+}

@@ -5,10 +5,25 @@ require("validators/validators.php");
 
 class Users extends Base
 {
+
+  public function getAllUsers() {
+    $sql = "
+    SELECT 
+      user_id, first_name, last_name, city, postal_code, created_at
+    FROM 
+      users
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute([]);
+
+    return $query->fetchAll( PDO::FETCH_ASSOC );
+  }
+
   public function getUserById($user) {
     $sql = "
     SELECT 
-      first_name, last_name, phone, city, postal_code, created_at, age, address
+      user_id, first_name, last_name, phone, city, postal_code, created_at, age, address
     FROM 
       users
     WHERE 
@@ -16,7 +31,7 @@ class Users extends Base
     ";
 
     $query = $this->db->prepare($sql);
-    $query->execute([ $user[ "logged" ]["user_id"] ]);
+    $query->execute([ isset($user[ "logged" ]["user_id"]) ? $user[ "logged" ]["user_id"] : $user["user_id"]  ]);
 
     return $query->fetch( PDO::FETCH_ASSOC );
   }

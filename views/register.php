@@ -17,7 +17,7 @@
   }
 
 ?>
-      <p>Se já tem uma conta de utilizador, <a href="/register">Efetue login.</a>
+      <p>Se já tem uma conta de utilizador, <a href="/login">Efetue login.</a>
     </p>
     <form action="/register" method="POST">
       <div class="field">
@@ -47,13 +47,13 @@
       <div class="field">
         <label>
           Password
-          <input type="password" name="password" minlength="8" maxlength="1000" required>
+          <input type="password" name="password" minlength="8" maxlength="255" required>
         </label>
       </div>
       <div class="field">
         <label>
           Repetir Password
-          <input type="password" name="repeat_password" minlength="8" maxlength="1000" required>
+          <input type="password" name="repeat_password" minlength="8" maxlength="255" required>
         </label>
       </div>
       <div class="field">
@@ -65,7 +65,7 @@
       <div class="field">
         <label>
           Cidade
-          <input type="text" name="city" required minlength="3" maxlength="40">
+          <input type="text" name="city" required minlength="3" maxlength="60">
         </label>
       </div>
       <div class="field">

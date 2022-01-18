@@ -35,9 +35,9 @@
 
       echo
       "<div>
-        <img width='100px' src='/assets/images/ads/${output["image"]}'>
-        <a href='/ads/detail/${output["permalink"]}'>${output["title"]}</a>
-        <p>Preço: ${output["price"]} €</p>
+        <img width='100px' src='/assets/images/ads/{$output["image"]}'>
+        <a href='/ads/detail/{$output["permalink"]}'>{$output["title"]}</a>
+        <p>Preço: {$output["price"]} €</p>
         <p>Criado a: ${ad_date}</p>
       </div>";  
 

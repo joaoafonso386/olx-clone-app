@@ -14,7 +14,7 @@
     require("templates/navigation.php");
 
     if(isset($_SESSION[ "logged" ]["user_name"])) echo "<p>Bem vindo ao OLX " . $_SESSION[ "logged" ]["user_name"] . "!</p>"; 
-    if(isset($_SESSION[ "logged" ]["admin_name"])) echo "<p>Bem vindo admin " . $_SESSION[ "logged" ]["admin_name"] . ". Aceda ao <a href='/backoffice'>backoffice aqui</a></p>";
+    if(isset($_SESSION[ "logged" ]["admin_name"])) echo "<p>Bem vindo admin " . $_SESSION[ "logged" ]["admin_name"] . ". Aceda ao <a href='/backoffice/users'>backoffice aqui</a></p>";
 
     require("templates/search.php");
 
@@ -27,9 +27,9 @@
 
     echo 
     "<div>
-      <a href='/ads/search/${category["permalink"]}'>
-        <h3>${category["name"]}</h3>
-        <img width='100px' src='/assets/images/categories/${category["image"]}'>
+      <a href='/ads/search/{$category["permalink"]}'>
+        <h3>{$category["name"]}</h3>
+        <img width='100px' src='/assets/images/categories/{$category["image"]}'>
       </a>
     </div>";  
 
@@ -47,10 +47,10 @@
 
     echo
     "<div>
-      <img width='100px' src='/assets/images/ads/${ad["image"]}'>
-      <a href='/ads/detail/${ad["permalink"]}'>${ad["title"]}</a>
-      <p>Preço: ${ad["price"]}€</p>
-      <p>Data de criação: ${formated_date}</p> 
+      <img width='100px' src='/assets/images/ads/{$ad["image"]}'>
+      <a href='/ads/detail/{$ad["permalink"]}'>{$ad["title"]}</a>
+      <p>Preço: {$ad["price"]}€</p>
+      <p>Data de criação: {$formated_date}</p> 
     </div>";
 
    }
