@@ -23,19 +23,19 @@
       <div class="field">
         <label>
           Primeiro Nome
-          <input type="text" name="first_name" required minlength="3" maxlength="60">
+          <input type="text" name="first_name" required minlength="3" maxlength="60" placeholder="<?php echo $user["first_name"]?>">
         </label>
       </div>
       <div class="field">
         <label>
           Apelido
-          <input type="text" name="last_name" required minlength="3" maxlength="60">
+          <input type="text" name="last_name" required minlength="3" maxlength="60" placeholder="<?php echo $user["last_name"]?>">
         </label>
       </div>
       <div class="field">
         <label>
           Email
-          <input type="email" name="email" required>
+          <input type="email" name="email" required placeholder="<?php echo $user["email"]?>">
         </label>
       </div>
       <div class="field">
@@ -53,19 +53,20 @@
       <div class="field">
         <label>
           Cidade
-          <input type="text" name="city" required minlength="3" maxlength="60">
+          <input type="text" name="city" required minlength="3" maxlength="60" placeholder="<?php echo $user["city"]?>">
         </label>
       </div>
       <div class="field">
         <label>
           Telefone/Telemóvel
-          <input type="text" name="phone" required minlength="9" maxlength="60">
+          <input type="text" name="phone" required minlength="9" maxlength="60" placeholder="<?php echo $user["phone"]?>">
         </label>
       </div>
+      <input type="hidden" name="db_password" value="<?php echo $user["password"]?>">
+      <input type="hidden" name="user_id" value="<?php echo $user["user_id"]?>">
       <div class="field">
         <button type="submit" name="edit">Guardar</button>
       </div>
-    </form>
     </form>
 </body>
 </html>

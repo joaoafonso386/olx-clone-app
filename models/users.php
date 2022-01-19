@@ -23,7 +23,7 @@ class Users extends Base
   public function getUserById($user) {
     $sql = "
     SELECT 
-      user_id, first_name, last_name, phone, city, postal_code, created_at, age, address
+      user_id, first_name, last_name, phone, city, postal_code, created_at, age, address, email, password
     FROM 
       users
     WHERE 
@@ -109,6 +109,39 @@ class Users extends Base
     }
       
       return 0;
+  }
+
+  public function updateUser( $user ) {
+
+    $sql = "
+      UPDATE 
+        users
+      SET
+        first_name = ?,
+        last_name = ?,
+        email = ?,
+        password = ?,
+        city = ?,
+        phone = ?,
+        updated_at = now()
+      WHERE 
+        user_id = ?
+      ";
+
+      $query = $this->db->prepare($sql);
+      
+      $result = $query->execute([ 
+        $user["first_name"],
+        $user["last_name"],
+        $user["email"],
+        password_hash($user["email"], PASSWORD_DEFAULT),
+        $user["city"],
+        $user["phone"],
+        $user["user_id"]
+      ]);
+      
+      return $result ? 1 : 0;
+
   }
 
 }

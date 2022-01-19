@@ -42,8 +42,10 @@ function validateRegisterUser( $user ) {
     mb_strlen($user["postal_code"]) <= 20 &&
     mb_strlen($user["phone"]) >= 4 &&
     mb_strlen($user["phone"]) <= 60 &&
+    intval($user["phone"]) > 0 &&
+    is_numeric($user["phone"]) &&
     mb_strlen($user["password"]) >= 8 &&
-    mb_strlen($user["password"]) <= 1000 &&
+    mb_strlen($user["password"]) <= 255 &&
     filter_var($user["email"], FILTER_VALIDATE_EMAIL) &&
     $user["password"] === $user["repeat_password"] &&
     isset( $user["agrees"] ) &&
@@ -116,6 +118,32 @@ function requestsValidator( $requestBody ) {
     is_numeric($requestBody["user_id"]) &&
     is_numeric($requestBody["ad_id"])
     ) {
+      return true;
+    } else {
+      return false;
+    }
+
+}
+
+function validateUpdateUser( $user ) {
+
+  if(
+    mb_strlen($user["first_name"]) >= 3 &&
+    mb_strlen($user["last_name"]) <= 60 &&
+    mb_strlen($user["city"]) >= 3 &&
+    mb_strlen($user["city"]) <= 60 &&
+    mb_strlen($user["phone"]) >= 4 &&
+    mb_strlen($user["phone"]) <= 60 &&
+    intval($user["phone"]) > 0 &&
+    is_numeric($user["phone"]) &&
+    mb_strlen($user["current_password"]) >= 8 &&
+    mb_strlen($user["current_password"]) <= 255 &&
+    password_verify($user["current_password"], $user["db_password"]) &&
+    mb_strlen($user["new_password"]) >= 8 &&
+    mb_strlen($user["new_password"]) <= 255 &&
+    filter_var($user["email"], FILTER_VALIDATE_EMAIL) &&
+    is_numeric($user["user_id"])
+    ) { 
       return true;
     } else {
       return false;
