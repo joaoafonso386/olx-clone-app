@@ -31,7 +31,9 @@ class Users extends Base
     ";
 
     $query = $this->db->prepare($sql);
-    $query->execute([ isset($user[ "logged" ]["user_id"]) ? $user[ "logged" ]["user_id"] : $user["user_id"]  ]);
+    $query->execute([ 
+      isset($user[ "logged" ]["user_id"]) ? $user[ "logged" ]["user_id"] : $user["user_id"]  
+    ]);
 
     return $query->fetch( PDO::FETCH_ASSOC );
   }
@@ -134,7 +136,7 @@ class Users extends Base
         $user["first_name"],
         $user["last_name"],
         $user["email"],
-        password_hash($user["email"], PASSWORD_DEFAULT),
+        password_hash($user["new_password"], PASSWORD_DEFAULT),
         $user["city"],
         $user["phone"],
         $user["user_id"]
@@ -142,6 +144,21 @@ class Users extends Base
       
       return $result ? 1 : 0;
 
+  }
+
+  public function deleteUser($user) {
+    
+    $sql = "
+    DELETE FROM 
+      users 
+    WHERE 
+      user_id = ?
+    ";
+
+    $query = $this->db->prepare($sql);
+    
+    return $query->execute([ $user["user_id"] ]);
+  
   }
 
 }

@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/main.css">
+  <script src="/javascript/backoffice/deleteuser.js" defer></script>
   <title>OLX Admin - Utilizadores</title>
 </head>
 <body>
@@ -13,6 +14,8 @@
     <?php require("views/backoffice/navigation.php"); ?>
 
     <h1>Controlo de Utilizadores</h1>
+
+    <div class="message"></div>
 
     <table class="admin-users-table">
       <tr>
@@ -39,7 +42,7 @@
                   <a href='/backoffice/users/edit?user_id={$user["user_id"]}' class='remove'>Editar</a>
                 </td>
                 <td>
-                  <button class='remove' type='button'>X</button>
+                  <button data-user-id='{$user["user_id"]}' class='remove' type='button'>X</button>
                 </td>
               </tr>
               ";

@@ -1,7 +1,8 @@
 <?php
 
 $requests_controllers = [
-  "favorite"
+  "favorite",
+  "backoffice"
 ];
 
 $requests_controller = !empty($url_parts[2]) ? $url_parts[2] : "";

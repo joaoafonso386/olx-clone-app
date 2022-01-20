@@ -40,6 +40,8 @@ if( !isset($_SESSION[ "logged" ]) ) {
       } else {
         $message = "Dados incorretos";
       }
+    } else {
+      $message = "Dados incorretos";
     }
     
   } 

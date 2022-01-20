@@ -125,6 +125,20 @@ function requestsValidator( $requestBody ) {
 
 }
 
+function requestsValidatorDelete( $requestBody ) {
+  if(
+    isset($requestBody["user_id"]) &&
+    !empty($requestBody["user_id"]) &&
+    intval($requestBody["user_id"]) > 0 &&
+    is_numeric($requestBody["user_id"])
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+
+}
+
 function validateUpdateUser( $user ) {
 
   if(
