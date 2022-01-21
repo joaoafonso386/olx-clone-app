@@ -9,7 +9,8 @@
 </head>
 <body>
   
-<?php require("views/backoffice/navigation.php"); ?>
+<?php require("views/backoffice/navigation.php");?>
+
 
 <?php 
 
@@ -68,5 +69,6 @@
         <button type="submit" name="edit">Guardar</button>
       </div>
     </form>
+    <a style="margin-top: 45px; display: block" href="/backoffice/users">Voltar</a>
 </body>
 </html>

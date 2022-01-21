@@ -4,6 +4,23 @@ require_once("base.php");
 
 class Admin extends Base
 {
+  public function getAdminById($id) {
+    
+      $sql = "
+      SELECT 
+        admin_id, full_name, password
+      FROM 
+        admin
+      WHERE 
+        email = ?
+      ";
+
+      $query = $this->db->prepare($sql);
+    
+      $query->execute([ $id ]);
+      
+      return $query->fetch( PDO::FETCH_ASSOC );
+  }
 
   public function loginAdmin( $admin ) {
 

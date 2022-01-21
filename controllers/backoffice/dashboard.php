@@ -2,7 +2,7 @@
 
 if(isset($_SESSION[ "logged" ]["admin_id"])) {
 
-  
+  require("views/backoffice/dashboard.php");
 
 
 } else {

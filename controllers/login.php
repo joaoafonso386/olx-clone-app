@@ -35,7 +35,7 @@ if( !isset($_SESSION[ "logged" ]) ) {
         $_SESSION[ "logged" ]["admin_id"] = $admin["admin_id"];
         $_SESSION[ "logged" ]["admin_name"] = $admin["full_name"];
         
-        header("Location: /");
+        header("Location: /backoffice/dashboard");
 
       } else {
         $message = "Dados incorretos";

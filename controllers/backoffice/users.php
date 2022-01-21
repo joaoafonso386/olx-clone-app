@@ -13,10 +13,6 @@ if(isset($_SESSION[ "logged" ]["admin_id"])) {
     $modelUsers = new Users();
     $users = $modelUsers->getAllUsers();
   
-    //Ação de Delete via AJAX
-  
-
-
     require("views/backoffice/users.php");
   }
 
