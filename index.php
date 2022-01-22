@@ -1,6 +1,8 @@
 <?php 
 session_start();
 
+setlocale (LC_ALL, 'pt');
+
 define("CONFIG", $config = parse_ini_file(".env"));
 
 $url_parts = explode("/", $_SERVER["REQUEST_URI"]);

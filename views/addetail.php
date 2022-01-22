@@ -20,28 +20,29 @@
     <div style="display: flex;">
       <div>
       <?php 
-        //mb_strtoupper é necessário para codificicação UTF-8
         $title = mb_strtoupper($ad["title"],'UTF-8');
+        $formated_created_at = dateFormatter($ad["created_at"]);
 
         echo "
           <img width='350' src='/assets/images/ads/{$ad["image"]}'>
           <br>
-          <span style='font-size: 15px; color: grey'>{$ad["created_at"]}</span>
+          <span style='font-size: 15px; color: grey'>Criado a {$formated_created_at}</span>
           <h1>{$title}</h1>
           <p style='font-size: 30px'>{$ad["price"]} €</p>
           <p style='font-size: 20px'>{$ad["description"]}</p>
         ";
 
         if(isset($_SESSION[ "logged" ]["user_id"])) { 
-          echo "<div>
-                 <button
-                  data-ad-id='{$ad["ad_id"]}'
-                  data-user-id='{$_SESSION[ "logged" ]["user_id"]}' 
-                  class='add-favorite' 
-                  type='button'>Adicionar aos favoritos</button>
-               </div>
-               <div class='message'>
-               </div>
+          echo "
+          <div>
+            <button
+            data-ad-id='{$ad["ad_id"]}'
+            data-user-id='{$_SESSION[ "logged" ]["user_id"]}' 
+            class='add-favorite' 
+            type='button'>Adicionar aos favoritos</button>
+          </div>
+          <div class='message'>
+          </div>
                ";
         }
 
@@ -51,8 +52,8 @@
         <h2>Utilizador</h2>
         <?php 
           
-          $formated_date_month = dateFormatter($user["created_at"], "F");
-          $formated_date_year = dateFormatter($user["created_at"], "Y");
+          $formated_date_month = ucfirst(dateFormatter($user["created_at"], "%B"));
+          $formated_date_year = dateFormatter($user["created_at"], "%Y");
           
           echo "
             <h3>{$user["first_name"]} {$user["last_name"]}</h3>
@@ -68,9 +69,12 @@
       <h2>Comentários</h2>
       <?php
         foreach($ad_comments as $ad_comment) {
+
+          $formated_created_at = dateFormatter($ad_comment["created_at"]);
+
           echo "
             <h3>{$ad_comment["first_name"]}</h3>
-            <p>Data: <time>{$ad_comment["created_at"]}</time></p>
+            <p>Data: <time>{$formated_created_at}</time></p>
             <p>{$ad_comment["description"]}</p>
           ";
         }

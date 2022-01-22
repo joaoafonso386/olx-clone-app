@@ -8,10 +8,10 @@
       <a href="/backoffice/users">Users</a>
     </li>
     <li>
-      <a href="/logout">Logout</a>
+      <a href="/">Front Office</a>
     </li>
     <li>
-      <a href="/">Front Office</a>
+      <a href="/logout">Logout</a>
     </li>
   </ul>
 </nav>
