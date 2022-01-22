@@ -3,7 +3,6 @@
 class Analytics extends Base
 {
 
-  //numero de anúncios
   public function numberOfAds() {
     $sql = "
     SELECT 
@@ -17,7 +16,7 @@ class Analytics extends Base
 
     return $query->fetch( PDO::FETCH_ASSOC );
   }
-  //numero de utilizadores
+
   public function numberOfUsers() {
     $sql = "
     SELECT 
@@ -31,9 +30,63 @@ class Analytics extends Base
 
     return $query->fetch( PDO::FETCH_ASSOC );
   }
-  //anuncio com mais comentarios
-  //ultimo anúncio criado
-  //ultimo anuncio updatado
+
+  public function mostCommentedAd() {
+    $sql="
+    SELECT 
+      ad_id, COUNT(ad_id) as comments, a.title, a.description
+    FROM 
+      ad_comments
+    INNER JOIN 
+      ads as a USING(ad_id)
+    GROUP BY 
+      ad_id
+    LIMIT
+      1
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute();
+
+    return $query->fetch( PDO::FETCH_ASSOC );
+
+  }
+  
+  public function lastCreatedAd() {
+    $sql="
+    SELECT 
+      title, description, created_at
+    FROM 
+      ads
+    ORDER BY 
+      created_at DESC
+    LIMIT 
+      1
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute();
+
+    return $query->fetch( PDO::FETCH_ASSOC );
+  }
+
+  public function lastCreatedUser() {
+    $sql="
+    SELECT 
+      first_name, last_name
+    FROM 
+      users
+    ORDER BY 
+      created_at DESC
+    LIMIT 
+      1
+    ";
+
+    $query = $this->db->prepare($sql);
+    $query->execute();
+
+    return $query->fetch( PDO::FETCH_ASSOC );
+  }
 
 
 }
