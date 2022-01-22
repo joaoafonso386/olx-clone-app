@@ -10,6 +10,10 @@ if(isset($_SESSION[ "logged" ]["admin_id"])) {
 
   $modelAnalytics = new Analytics();
   $numberOfAds = $modelAnalytics->numberOfAds();
+  $numberOfUsers = $modelAnalytics->numberOfUsers();
+  $mostCommentedAd = $modelAnalytics->mostCommentedAd();
+  $lastCreatedAd = $modelAnalytics->lastCreatedAd();
+  $lastCreatedUser = $modelAnalytics->lastCreatedUser();
   
   require("views/backoffice/dashboard.php");
 

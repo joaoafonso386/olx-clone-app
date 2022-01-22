@@ -1,3 +1,5 @@
+import { request } from "../modules/request.js";
+
 const removeButtons = document.querySelectorAll("button.remove");
 
 for(let button of removeButtons) {
@@ -9,20 +11,14 @@ for(let button of removeButtons) {
     if(confirmDelete) {
       const tr = button.parentNode.parentNode;
     
-      fetch("/requests/backoffice/deleteuser", {
-        method: "DELETE",
-        mode: "same-origin",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: parseInt(button.dataset.userId)
-        })
-      })
+      const body = {
+        user_id: parseInt(button.dataset.userId)
+      }
+
+      request("/requests/backoffice/deleteuser", "DELETE", body)
       .then(response => {
         if(response.status === 200) {
-          response.json()
+          return response.json()
         }
       })
       .then(() => {

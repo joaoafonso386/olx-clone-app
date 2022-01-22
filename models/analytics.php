@@ -34,7 +34,7 @@ class Analytics extends Base
   public function mostCommentedAd() {
     $sql="
     SELECT 
-      ad_id, COUNT(ad_id) as comments, a.title, a.description
+      ad_id, COUNT(ad_id) as comments, a.title, a.description, a.permalink
     FROM 
       ad_comments
     INNER JOIN 
@@ -55,7 +55,7 @@ class Analytics extends Base
   public function lastCreatedAd() {
     $sql="
     SELECT 
-      title, description, created_at
+      title, description, created_at, permalink
     FROM 
       ads
     ORDER BY 
@@ -73,7 +73,7 @@ class Analytics extends Base
   public function lastCreatedUser() {
     $sql="
     SELECT 
-      first_name, last_name
+      first_name, last_name, created_at
     FROM 
       users
     ORDER BY 

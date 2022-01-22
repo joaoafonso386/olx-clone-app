@@ -10,5 +10,8 @@
     <li>
       <a href="/logout">Logout</a>
     </li>
+    <li>
+      <a href="/">Front Office</a>
+    </li>
   </ul>
 </nav>

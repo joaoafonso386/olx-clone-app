@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/main.css">
-  <script src="/javascript/backoffice/deleteuser.js" defer></script>
+  <script type="module" src="/javascript/modules/request.js" defer></script>
+  <script type="module" src="/javascript/backoffice/deleteuser.js" defer></script>
   <title>OLX Admin - Utilizadores</title>
 </head>
 <body>

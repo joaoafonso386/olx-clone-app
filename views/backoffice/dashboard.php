@@ -12,7 +12,34 @@
   <h1>Dashboard</h1>
   <div style="display:flex; justify-content:space-between">
     <div>
-      <h3>Numero de Anúncios do site: <?php echo $numberOfAds["ads_number"] ?></h3>
+      <h3>Numero de anúncios na aplicação: <?php echo $numberOfAds["ads_number"] ?> anúncios</h3>
+      <h3>Numero de utilizadores registados: <?php echo $numberOfUsers["users_number"] ?> utilizadores</h3>
+      <div style="border: 1px solid black; text-align: center">
+        <?php
+        echo "
+          <h3>Anúncio mais comentado</h3>
+          <a href='/ads/detail/{$mostCommentedAd["permalink"]}'>{$mostCommentedAd["title"]}</a>
+          <p>{$mostCommentedAd["description"]}</p>
+          <p>Número de comentários: {$mostCommentedAd["comments"]}</p>";
+        ?>
+      </div>
+      <div style="margin-top: 20px; border: 1px solid black; text-align: center">
+        <?php
+        echo "
+          <h3>Último anúncio criado</h3>
+          <a href='/ads/detail/{$lastCreatedAd["permalink"]}'>{$lastCreatedAd["title"]}</a>
+          <p>{$lastCreatedAd["description"]}</p>
+          <p>Data de criação: {$lastCreatedAd["created_at"]}</p>";
+        ?>
+      </div>
+      <div style="margin-top: 20px; border: 1px solid black; text-align: center">
+        <?php
+        echo "
+          <h3>Último utilizador criado</h3>
+          <p>{$lastCreatedUser["first_name"]} {$lastCreatedUser["last_name"]}</p>
+          <p>Data de criação: {$lastCreatedUser["created_at"]}</p>";
+        ?>
+      </div>
     </div>
     <div style="margin: 0 100px 0 0;">
       <?php 

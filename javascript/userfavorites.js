@@ -1,21 +1,17 @@
+import { request } from "./modules/request.js";
+
 const button = document.querySelector("button.remove-favorite");
 
 button.onclick = () => {
 
-  fetch("/requests/favorite", {
-    method: "DELETE",
-    mode: "same-origin",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      ad_id: parseInt(button.dataset.adId),
-      user_id: parseInt(button.dataset.userId)
-    })
-  }).then(response => { 
+  const body = {
+    ad_id: parseInt(button.dataset.adId),
+    user_id: parseInt(button.dataset.userId)
+  }
+
+  request("/requests/favorite", "DELETE", body).then(response => { 
     if(response.status === 200) {
-      response.json()
+      return response.json()
     }
   }).then(response => {
     const divMessage = document.querySelector(".message");
