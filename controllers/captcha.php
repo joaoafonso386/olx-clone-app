@@ -14,7 +14,7 @@ $font = getcwd() . "\\assets\\fonts\\captcha.ttf";
 
 $color = imagecolorallocate($image, 255, 255, 255);
 
-$text = mb_strtoupper(bin2hex( random_bytes(4) ));
+$text = mb_strtoupper(bin2hex( random_bytes(3) ));
 
 $_SESSION["captcha"] = $text;
 
