@@ -8,6 +8,9 @@ if(isset($_SESSION[ "logged" ]["admin_id"])) {
   $modelAdmin = new Admin();
   $admin = $modelAdmin->getAdminById($_SESSION[ "logged" ]["admin_id"]);
 
+  $modelAnalytics = new Analytics();
+  $numberOfAds = $modelAnalytics->numberOfAds();
+  
   require("views/backoffice/dashboard.php");
 
 

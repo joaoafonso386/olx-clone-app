@@ -12,7 +12,7 @@
   <h1>Dashboard</h1>
   <div style="display:flex; justify-content:space-between">
     <div>
-      Stats
+      <h3>Numero de Anúncios do site: <?php echo $numberOfAds["ads_number"] ?></h3>
     </div>
     <div style="margin: 0 100px 0 0;">
       <?php 
