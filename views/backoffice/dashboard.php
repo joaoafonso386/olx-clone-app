@@ -11,8 +11,19 @@
 
   <h1>Dashboard</h1>
   <div style="display:flex; justify-content:space-between">
-    <div>Stats</div>
-    <div style="margin: 0 100px 0 0;">Info do Admin</div>
+    <div>
+      Stats
+    </div>
+    <div style="margin: 0 100px 0 0;">
+      <?php 
+          echo "
+          <h2>{$admin["full_name"]}</h2>
+          <p>Email: {$admin["email"]}</p>
+          <p>Posição: {$admin["position"]}</p>
+          <p>Data de criação de conta: {$admin["created_at"]}</p>
+          ";
+      ?>
+      </div>
   </div>
 
 </body>

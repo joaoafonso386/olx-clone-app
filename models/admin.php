@@ -5,14 +5,14 @@ require_once("base.php");
 class Admin extends Base
 {
   public function getAdminById($id) {
-    
+
       $sql = "
       SELECT 
-        admin_id, full_name, password
+        full_name, email, position, created_at
       FROM 
         admin
       WHERE 
-        email = ?
+        admin_id = ?
       ";
 
       $query = $this->db->prepare($sql);

@@ -3,8 +3,10 @@
 class Analytics extends Base
 {
 
-  //informação do admin
   //numero de anúncios
+  public function numberOfAds() {
+    
+  }
   //numero de utilizadores
   //anuncio com mais comentarios
   //ultimo anúncio criado
