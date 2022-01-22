@@ -27,7 +27,7 @@ if(isset($_SESSION[ "logged" ]["user_id"])) {
 
       } else {
 
-        http_response_code(400);
+        http_response_code(200);
         echo '{"message": "Este anúncio já está nos seus favoritos!"}';
 
       }

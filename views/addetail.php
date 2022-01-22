@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/main.css">
   <title><?php echo $ad["title"] ?></title>
-  <script src="/javascript/modules/require.js" defer></script>
-  <script src="/javascript/addetail.js" defer></script>
+  <script type="module" src="/javascript/modules/request.js" defer></script>
+  <script type="module" src="/javascript/addetail.js" defer></script>
 </head>
 <body>
 

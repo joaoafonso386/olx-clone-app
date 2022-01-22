@@ -1,4 +1,4 @@
-const request = (url, method, body = {}) => {
+function request (url, method, body = {})  {
 
   return fetch(url, {
     method: method,
@@ -11,3 +11,5 @@ const request = (url, method, body = {}) => {
   })
 
 }
+
+export { request };
