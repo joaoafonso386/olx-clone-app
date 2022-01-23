@@ -56,7 +56,7 @@
     </table>
       <?php 
       } else {
-          echo "<p>Ainda não tens nada no do carro</p>";
+          echo "<p>Não existem utilizadores registados</p>";
       }
       ?>
   </main>

@@ -21,8 +21,14 @@ for(let button of removeButtons) {
           return response.json()
         }
       })
-      .then(() => {
-        tr.remove()
+      .then((response) => {
+        tr.remove();
+        const divMessage = document.querySelector(".message");
+        const message = document.createElement('p');
+        
+        divMessage.textContent = '';
+        message.innerHTML = `<b>${response.message}</b>`;
+        divMessage.appendChild(message);
       });
 
     }
