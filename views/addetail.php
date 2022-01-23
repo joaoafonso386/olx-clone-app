@@ -56,10 +56,12 @@
           $formated_date_year = dateFormatter($user["created_at"], "%Y");
           
           echo "
+          <div>
             <h3>{$user["first_name"]} {$user["last_name"]}</h3>
             <p>No OLX desde {$formated_date_month} de {$formated_date_year}</p>
             <p>Contacto Telefónico: {$user["phone"]}</p>
             <p>Localização: {$user["city"]}, {$user["postal_code"]}</p>
+          </div>
           ";
         ?>
       </div>

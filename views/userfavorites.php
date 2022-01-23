@@ -23,6 +23,9 @@
   }
 
   foreach($favoritedAds as $favoritedAd) {
+
+    $formated_date = dateFormatter($favoritedAd["created_at"]);
+
     echo "
       <div class='container'>
         <div style='display:flex; flex-direction: column; gap:10px;'>
@@ -31,7 +34,7 @@
           <span>{$favoritedAd["category_name"]}</span>
           <span>{$favoritedAd["price"]}€</span>
           <span>{$favoritedAd["user_city"]}</span>
-          <span>{$favoritedAd["created_at"]}</span>
+          <span>{$formated_date}</span>
         </div>
         <button 
           style=' margin: 10px 0 20px 0;' width='10px' 

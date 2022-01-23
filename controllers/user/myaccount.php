@@ -1,6 +1,7 @@
 <?php
 
 require("models/users.php");
+require("utils/utils.php");
 
 if(isset($_SESSION[ "logged" ]["user_id"])) {
 

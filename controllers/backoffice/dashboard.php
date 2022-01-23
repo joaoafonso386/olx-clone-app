@@ -2,6 +2,7 @@
 
 require("models/admin.php");
 require("models/analytics.php");
+require("utils/utils.php");
 
 if(isset($_SESSION[ "logged" ]["admin_id"])) {
 

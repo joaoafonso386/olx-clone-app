@@ -32,13 +32,15 @@
       if(!empty($users)) {
 
         foreach($users as $user) {
-        
+          
+          $formated_date = dateFormatter($user["created_at"]);
+
           echo"
               <tr>
                 <td>{$user["user_id"]}</td>
                 <td>{$user["first_name"]} {$user["last_name"]}</td>
                 <td>{$user["city"]}, {$user["postal_code"]}</td>
-                <td>{$user["created_at"]}</td>
+                <td>{$formated_date}</td>
                 <td>
                   <a href='/backoffice/users/edit?user_id={$user["user_id"]}' class='remove'>Editar</a>
                 </td>
